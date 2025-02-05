@@ -122,33 +122,33 @@ int verifyaccount(long long acc_num, const char *passwd) {
 
     char line[256];
     // Skip the header line
-    fgets(line, sizeof(line), file);
+    //fgets(line, sizeof(line), file);
 
-    long long file_acc_num;
-    char file_passwd[100];  // Assume the password is less than 100 characters
-    char name[100], dob[100], aadhar[100], number[100];  // Other fields in the CSV
+    long long acc_no;
+    char name[256],pass[256];
+    int DOB,adhaar,phno;
 
     // Read each line from the file
     while (fgets(line, sizeof(line), file)) {
-        // Read the values from the line using sscanf
-        int num_fields = sscanf(line, "%lld,%99[^,],%99[^,],%99[^,],%99[^,],%99[^\n]",
-                                  &file_acc_num, name, dob, aadhar, number, file_passwd);
-
-
-
-        // Compare the account number and password
-        if (file_acc_num == acc_num && strcmp(file_passwd, passwd) == 0) {
-            fclose(file);
-            return 1;  // Account and password match
+        // Corrected sscanf format
+        if (sscanf(line, "%lld,%255[^,],%d,%d,%d,%255s", &acc_no, name, &DOB, &adhaar, &phno, pass) == 6) {
+            if (acc_no == acc_num) {
+                fclose(file);  // Ensure file is closed before returning
+                if (strcmp(pass, passwd) == 0) {
+                    return 1;  // Account and password match
+                }
+                return 0;  // Password does not match
+            }
         }
     }
+    return 0;
 
     fclose(file);
-    return 1;  // Account or password didn't match
+    // Account or password didn't match
 }
 
 
 void clear_screen() {
-    system("cl");
+    system("clear");
 }
 #endif

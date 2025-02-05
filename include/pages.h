@@ -83,10 +83,12 @@ int login_page_code()
         char pass[100];
 		printf("Enter your Password : ");
 		scanf("%s",&pass);
+        int a = verifyaccount(accno,pass); 
 
-		if (verifyaccount(accno,pass)){
-
+		if (a){
+            
 			printf("Login Successfull!!!\n");
+            clear_screen();
 
 			return accno;
 
@@ -178,7 +180,7 @@ int deposit_withdraw_check(long long accno)
 	}
 
 }
-
+    clear_screen();
 	return 0;
 }
 
@@ -380,6 +382,7 @@ int amounttdeposit(long long accno, double amt)
     rename("temp.csv", "balance.csv");
 
     printf("Transaction Successful!\n");
+    
     return 1;
 }
 #endif // PAGES_H
