@@ -1,13 +1,18 @@
 #include "try.c"
 int main()
 {
-	long long int acc;
-	char pass[256];
-	int ch;
-	printf("Enter acc number: \t");
-	scanf("%lld\n",&acc);
-	printf("Enter pass: \b");
-	fgets(pass,256,stdin);
-	int a = verifyaccount(acc,pass);
+	//addaccount();
+	/*int acc_num;
+	char password[100];
+	printf("Enter account number: ");
+	scanf("%lld",&acc_num);
+	getchar();
+	printf("Enter password: ");
+	fgets(password,sizeof(password),stdin);
+	removeNewline(password);
+
+	int a = verifyaccount(acc_num,password);
 	printf("\n%d",a);
+	*/
+	addaccount();
 }

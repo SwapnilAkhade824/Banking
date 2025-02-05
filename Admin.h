@@ -6,7 +6,7 @@
 #include <time.h>
 #include <stdlib.h>
 long long generateUniqueId();
-int signup();
-int signin();
+int addaccount();
+int verifyaccount(long long acc_num, char *passwd);
 void removeNewline(char *str);
 #endif
