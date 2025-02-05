@@ -95,16 +95,16 @@ int addaccount()
 }
 
 
-int verifyaccount()
-{
+int verifyaccount(long long int acc_num, const char *passwd){
 	FILE *file;
 	file=fopen("Signup.csv","r");
 	if(file == NULL){
 		printf("Error: Couldn't open the file");
 		return 0;
 	}
-	long long acc_num;
-	char line[256],passwd[100];
+	
+	
+	char line[256];
     // Skip the header line
     fgets(line, sizeof(line), file);
 
