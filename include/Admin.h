@@ -131,7 +131,7 @@ int verifyaccount(long long acc_num, const char *passwd) {
     // Read each line from the file
     while (fgets(line, sizeof(line), file)) {
         // Corrected sscanf format
-        if (sscanf(line, "%lld,%255[^,],%d,%d,%d,%255s", &acc_no, name, &DOB, &adhaar, &phno, pass) == 6) {
+        if (sscanf(line, "%lld,%255[^,],%d,%d,%d,%255[^\n]", &acc_no, name, &DOB, &adhaar, &phno, pass) == 6) {
             if (acc_no == acc_num) {
                 fclose(file);  // Ensure file is closed before returning
                 if (strcmp(pass, passwd) == 0) {
